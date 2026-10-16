@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Catálogo{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'catalogo:inicio' %}">Inicio</a> |
+        <a href="{% url 'catalogo:lista_libros' %}">Libros</a> |
+        <a href="{% url 'catalogo:contacto' %}">Contacto</a> |
+        <a href="{% url 'catalogo:autores' %}">Autores</a> |
+        <a href="{% url 'catalogo:sugerir' %}">Sugerir</a> |
+        <a href="{% url 'catalogo:buscar' %}">Buscador</a> |
+        <a href="{% url 'catalogo:acerca' %}">Acerca de</a>
+    </nav>
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+    <footer>Proyecto de clase ADSO</footer>
+</body>
+</html>

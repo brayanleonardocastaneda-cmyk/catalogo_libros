@@ -1,0 +1,34 @@
+{% extends "App_catalogo/base.html" %}
+
+{% block titulo %}Buscar{% endblock %}
+
+{% block contenido %}
+    <h1>Buscar libros por título</h1>
+
+    <!-- Formulario para buscar por el método GET -->
+    <form method="get">
+        <!-- value="{{ query }}" para que no se borre lo que escribí -->
+        <input type="text" name="q" value="{{ query }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <hr>
+
+    <!-- Si ya se hizo una búsqueda, mostramos esto -->
+    {% if busco %}
+        <p>Resultados para "{{ query }}":</p>
+        
+        <ul>
+            <!-- Recorremos la lista de libros encontrados -->
+            {% for libro in resultados %}
+                <li>
+                    <a href="{% url 'catalogo:detalle_libro' libro.id %}">{{ libro.titulo }}</a> 
+                    ({{ libro.anio }})
+                </li>
+            {% empty %}
+                <!-- Si no hay nada, sale este mensaje -->
+                <li>No se encontraron libros para "{{ query }}".</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "App_catalogo/base.html" %}
+{% block titulo %} Autores {% endblock %}
+{% block contenido %}
+    <h1>Autores del Catálogo</h1>
+    <ul>
+        {% for item in autores %}
+            <li>{{ item.autor }} - Libros: {{ item.total }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
